@@ -26,7 +26,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
-        "dzmitry.bitsiutski/roadrunner-bundle": "^0.0.5",
+        "dzmitry.bitsiutski/roadrunner-bundle": "^0.0.6",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",

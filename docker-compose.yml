@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  app-card-skeleton:
-    container_name: app-card-skeleton
+  sm-rr-skeleton:
+    container_name: sm-rr-skeleton
     build:
       context: .
       dockerfile: docker/roadrunner/Dockerfile
     environment:
-      PHP_IDE_CONFIG: "serverName=app-card-skeleton"
+      PHP_IDE_CONFIG: "serverName=sm-rr-skeleton"
       FINANCE_APP_CONTAINER: ${FINANCE_APP_CONTAINER:-finance_app}
     volumes:
       - ./:/home/app/src
@@ -27,8 +27,8 @@ services:
       - ${HTTPS_HOST_PORT:-3002}:3002
     extra_hosts:
       - "host.docker.internal:host-gateway"
-  app-card-mariadb:
-    container_name: app-card-mariadb
+  sm-rr-mariadb:
+    container_name: sm-rr-mariadb
     image: gitlab.paysera.net:5050/paysera/developer-environment/tools-mariadb:dev
     volumes:
       - app_card_db_data:/var/lib/mysql:rw
@@ -41,4 +41,4 @@ volumes:
 
 networks:
   default:
-    name: ${NETWORK_NAME:-app-card-network}
+    name: ${NETWORK_NAME:-sm-rr-network}
