@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  app-card-skeleton:
+    container_name: app-card-skeleton
+    build:
+      context: .
+      dockerfile: docker/roadrunner/Dockerfile
+    environment:
+      PHP_IDE_CONFIG: "serverName=app-card-skeleton"
+      FINANCE_APP_CONTAINER: ${FINANCE_APP_CONTAINER:-finance_app}
+    volumes:
+      - ./:/home/app/src
+      - ./docker/development/https/local.crt:/etc/https/local.crt
+      - ./docker/development/https/local.key:/etc/https/local.key
+      - ./docker/development/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - ./docker/development/php/conf.d/xdebug.ini:/etc/php/8.2/cli/conf.d/99-xdebug.ini
+      - ./docker/development/php/conf.d/xdebug.ini:/etc/php/8.2/fpm/conf.d/99-xdebug.ini
+      - ./docker/development/php/conf.d/security.ini:/usr/local/etc/php/conf.d/99-security.ini
+      - ./docker/development/php/conf.d/error.ini:/usr/local/etc/php/conf.d/99-error.ini
+    ports:
+      # http
+      - ${WEB_HOST_PORT:-18080}:8080
+      # grpc
+      - ${GRPC_HOST_PORT:-19000}:9000
+      # https
+      - ${HTTPS_HOST_PORT:-3002}:3002
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  app-card-mariadb:
+    container_name: app-card-mariadb
+    image: gitlab.paysera.net:5050/paysera/developer-environment/tools-mariadb:dev
+    volumes:
+      - app_card_db_data:/var/lib/mysql:rw
+    ports:
+      - ${DB_HOST_PORT_MD:-13306}:${DATABASE_PORT:-3306}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+volumes:
+  app_card_db_data:
+
+networks:
+  default:
+    name: ${NETWORK_NAME:-app-card-network}

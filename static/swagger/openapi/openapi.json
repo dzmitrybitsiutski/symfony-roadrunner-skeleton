@@ -1,0 +1,1529 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "BigWallet Smartvista",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "{url}",
+            "description": "Url",
+            "variables": {
+                "url": {
+                    "enum": [
+                        "https://api.dev.bigwallet.eu/smartvista",
+                        "https://api.stage.bigwallet.eu/smartvista",
+                        "/"
+                    ],
+                    "default": "/"
+                }
+            }
+        }
+    ],
+    "paths": {
+        "/v1/authentication/finish": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Finish Authentication",
+                "operationId": "a62e0749511b55e334898f0957405e83",
+                "requestBody": {},
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error of validation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/authentication/start": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Start Authentication",
+                "operationId": "0ade78bf8f192f4076c288a5eb406c0a",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "transactionId",
+                                    "cardId",
+                                    "amount",
+                                    "currency",
+                                    "currencyExponent"
+                                ],
+                                "properties": {
+                                    "transactionId": {
+                                        "type": "string"
+                                    },
+                                    "cardId": {
+                                        "type": "string"
+                                    },
+                                    "accountNumberHash": {
+                                        "type": "string"
+                                    },
+                                    "authenticationRequestData": {
+                                        "properties": {
+                                            "purchaseDate": {
+                                                "type": "string"
+                                            },
+                                            "acquirerMerchantId": {
+                                                "type": "string"
+                                            },
+                                            "threeDSRequestorURL": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "amount": {
+                                        "type": "string"
+                                    },
+                                    "currency": {
+                                        "type": "string"
+                                    },
+                                    "currencyExponent": {
+                                        "type": "string"
+                                    },
+                                    "authenticationMethod": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "transactionId": {
+                                            "type": "string"
+                                        },
+                                        "authenticationId": {
+                                            "type": "string"
+                                        },
+                                        "authenticationMethod": {
+                                            "type": "string"
+                                        },
+                                        "sessionExpirationDate": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error of validation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/backoffice/card/tokenization": {
+            "get": {
+                "tags": [
+                    "Card"
+                ],
+                "summary": "View card tokenization report, groupped in specified way",
+                "operationId": "58b82439f1ca2b2048411010076a7b03",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "int"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "int",
+                            "enum": [
+                                "10",
+                                "20",
+                                "50",
+                                "100"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "payment_method",
+                                "card_type",
+                                "card_design",
+                                "country",
+                                "provisioned_before",
+                                "provisioned_during",
+                                "removed_during",
+                                "provisioned_end"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "sort_dir",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "asc",
+                                "desc"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "f_date_from",
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "name": "f_date_to",
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "name": "f_payment_method",
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "name": "f_card_type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "f_card_design",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "f_country",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "description": "Iso2 code",
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "group_by",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "card_type",
+                                    "card_design",
+                                    "country"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "json",
+                                    "csv"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "payload": {
+                                            "properties": {
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "payment_method": {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "google_pay",
+                                                                    "apple_pay"
+                                                                ]
+                                                            },
+                                                            "card_type": {
+                                                                "type": "string"
+                                                            },
+                                                            "card_design": {
+                                                                "type": "string"
+                                                            },
+                                                            "country": {
+                                                                "description": "Iso2 code",
+                                                                "type": "string"
+                                                            },
+                                                            "provisioned_before": {
+                                                                "description": "Before provided date range",
+                                                                "type": "integer"
+                                                            },
+                                                            "provisioned_during": {
+                                                                "description": "During provided date range",
+                                                                "type": "integer"
+                                                            },
+                                                            "removed_during": {
+                                                                "description": "During provided date range",
+                                                                "type": "integer"
+                                                            },
+                                                            "provisioned_end": {
+                                                                "description": "At the end of provided date range",
+                                                                "type": "integer"
+                                                            },
+                                                            "total": {
+                                                                "description": "Total during period",
+                                                                "type": "integer"
+                                                            },
+                                                            "tokens_not_used": {
+                                                                "description": "How many tokens were not used during period",
+                                                                "type": "integer"
+                                                            },
+                                                            "tokens_used_1": {
+                                                                "description": "How many tokens were used 1 time during period",
+                                                                "type": "integer"
+                                                            },
+                                                            "tokens_used_2": {
+                                                                "description": "How many tokens were used 2 times during period",
+                                                                "type": "integer"
+                                                            },
+                                                            "tokens_used_3": {
+                                                                "description": "How many tokens were used 3 times during period",
+                                                                "type": "integer"
+                                                            },
+                                                            "tokens_used_4": {
+                                                                "description": "How many tokens were used 4 times during period",
+                                                                "type": "integer"
+                                                            },
+                                                            "tokens_used_5": {
+                                                                "description": "How many tokens were used 5 times during period",
+                                                                "type": "integer"
+                                                            },
+                                                            "tokens_used_6": {
+                                                                "description": "How many tokens were used 6 times during period",
+                                                                "type": "integer"
+                                                            },
+                                                            "tokens_used_7": {
+                                                                "description": "How many tokens were used 7 times during period",
+                                                                "type": "integer"
+                                                            },
+                                                            "tokens_used_8": {
+                                                                "description": "How many tokens were used 8 times during period",
+                                                                "type": "integer"
+                                                            },
+                                                            "tokens_used_9": {
+                                                                "description": "How many tokens were used 9 times during period",
+                                                                "type": "integer"
+                                                            },
+                                                            "tokens_used_10_and_more": {
+                                                                "description": "How many tokens were used 10 and more times during period",
+                                                                "type": "integer"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "page": {
+                                                    "type": "integer"
+                                                },
+                                                "per_page": {
+                                                    "type": "integer",
+                                                    "enum": [
+                                                        10,
+                                                        20,
+                                                        50,
+                                                        100
+                                                    ]
+                                                },
+                                                "total": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/backoffice/clearing/operations": {
+            "get": {
+                "tags": [
+                    "Clearing"
+                ],
+                "summary": "View list of clearing operations. Needs permission svxp:list",
+                "operationId": "38e5a453d1b49f5630c26df2e383e706",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "int"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "int",
+                            "enum": [
+                                "10",
+                                "20",
+                                "50",
+                                "100"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "oper_type",
+                                "msg_type",
+                                "sttl_type",
+                                "terminal_type",
+                                "transaction_jurisdiction",
+                                "reversal",
+                                "issuer_account_number",
+                                "issuer_customer_number",
+                                "oper_date",
+                                "host_date",
+                                "created_at",
+                                "settlement_advancement"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "sort_dir",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "asc",
+                                "desc"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "f_sv_operation_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "f_match_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "f_flow_code",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "c2c_internal",
+                                    "add_money",
+                                    "init_cards"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "f_card_brand",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "MasterCard",
+                                    "Visa",
+                                    "American Express",
+                                    "Discover",
+                                    "JCB"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "f_oper_type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "OPTP0000",
+                                    "OPTP0001",
+                                    "OPTP0010",
+                                    "OPTP0018",
+                                    "OPTP0019",
+                                    "OPTP0020",
+                                    "OPTP0026",
+                                    "OPTP0029",
+                                    "OPTP0030",
+                                    "OPTP0119"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "f_msg_type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "MSGTAUTH",
+                                    "MSGTPREU",
+                                    "MSGTPRES",
+                                    "MSGTCHBK",
+                                    "MSGTREPR",
+                                    "MSGTBTCH",
+                                    "MSGTCMPL",
+                                    "MSGTFPST",
+                                    "MSGTRLBK",
+                                    "MSGTRTRQ",
+                                    "MSGTSCDL",
+                                    "MSGTSPLT",
+                                    "MSGTSTAT",
+                                    "MSGTVALD"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "f_sttl_type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "STTT6008",
+                                    "STTT6009",
+                                    "STTT6010",
+                                    "STTT0010",
+                                    "STTT0100",
+                                    "STTT0200",
+                                    "STTT0000",
+                                    "STTT0300",
+                                    "STTT1001",
+                                    "STTT1002"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "f_status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "OPST0001",
+                                    "OPST0100",
+                                    "OPST0101",
+                                    "OPST0400",
+                                    "OPST0401",
+                                    "OPST0402",
+                                    "OPST0404",
+                                    "OPST0500"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "f_terminal_type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "TRMT0001",
+                                    "TRMT0002",
+                                    "TRMT0003",
+                                    "TRMT0004",
+                                    "TRMT0005",
+                                    "TRMT0006",
+                                    "TRMT0007"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "f_transaction_jurisdiction",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "TRJRTDOM",
+                                    "TRJRTREG",
+                                    "TRJRTINT",
+                                    "TRJRUNDF"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "f_reversal",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "true",
+                                    "false"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "f_issuer_card_type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "VIRTUAL",
+                                    "PHYSICAL"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "f_issuer_account_number",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "f_issuer_customer_number",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "f_settlement_advancement",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "f_acquirer_reference_number",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "f_oper_date_from",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "f_oper_date_to",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "f_host_date_from",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "f_host_date_to",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "f_sttl_date_from",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "f_sttl_date_to",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "f_created_at_from",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "f_created_at_to",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "json",
+                                    "csv"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "payload": {
+                                            "properties": {
+                                                "operations": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string",
+                                                                "format": "uuid"
+                                                            },
+                                                            "sv_operation_id": {
+                                                                "type": "string"
+                                                            },
+                                                            "match_id": {
+                                                                "type": "string"
+                                                            },
+                                                            "oper_type": {
+                                                                "properties": {
+                                                                    "code": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "description": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            },
+                                                            "msg_type": {
+                                                                "properties": {
+                                                                    "code": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "description": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            },
+                                                            "sttl_type": {
+                                                                "properties": {
+                                                                    "code": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "description": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            },
+                                                            "response_code": {
+                                                                "properties": {
+                                                                    "code": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "description": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            },
+                                                            "status": {
+                                                                "properties": {
+                                                                    "code": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "description": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            },
+                                                            "oper_date": {
+                                                                "type": "string",
+                                                                "format": "date-time"
+                                                            },
+                                                            "host_date": {
+                                                                "type": "string",
+                                                                "format": "date-time"
+                                                            },
+                                                            "oper_amount_value": {
+                                                                "type": "string"
+                                                            },
+                                                            "oper_amount_currency": {
+                                                                "type": "string"
+                                                            },
+                                                            "sttl_amount_value": {
+                                                                "type": "string"
+                                                            },
+                                                            "sttl_amount_currency": {
+                                                                "type": "string"
+                                                            },
+                                                            "interchange_fee_value": {
+                                                                "type": "string"
+                                                            },
+                                                            "interchange_fee_currency": {
+                                                                "type": "string"
+                                                            },
+                                                            "reversal": {
+                                                                "type": "boolean"
+                                                            },
+                                                            "merchant_number": {
+                                                                "type": "string"
+                                                            },
+                                                            "merchant_name": {
+                                                                "type": "string"
+                                                            },
+                                                            "merchant_country": {
+                                                                "type": "string"
+                                                            },
+                                                            "merchant_city": {
+                                                                "type": "string"
+                                                            },
+                                                            "issuer_card_type": {
+                                                                "type": "string"
+                                                            },
+                                                            "issuer_card_number": {
+                                                                "type": "string"
+                                                            },
+                                                            "issuer_account_number": {
+                                                                "type": "string"
+                                                            },
+                                                            "issuer_customer_number": {
+                                                                "type": "string"
+                                                            },
+                                                            "settlement_advancement": {
+                                                                "type": "string"
+                                                            },
+                                                            "acquirer_reference_number": {
+                                                                "type": "string"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string",
+                                                                "format": "date-time"
+                                                            },
+                                                            "entries": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "properties": {
+                                                                        "amount": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "currency": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "direction": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "transaction_type": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "balance_type": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "purpose": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "conversation_rate": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "rate_type": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    },
+                                                                    "type": "object"
+                                                                }
+                                                            },
+                                                            "details": {
+                                                                "properties": {
+                                                                    "flow_code": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "card_brand": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "bank_name": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "bank_country_name": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "add_money_method": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "card",
+                                                                            "paysafecash",
+                                                                            "<null>"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "filter": {
+                                                    "type": "object",
+                                                    "example": {
+                                                        "sv_operation_id": "5454545454"
+                                                    }
+                                                },
+                                                "page": {
+                                                    "type": "integer"
+                                                },
+                                                "per_page": {
+                                                    "type": "integer",
+                                                    "enum": [
+                                                        10,
+                                                        20,
+                                                        50,
+                                                        100
+                                                    ]
+                                                },
+                                                "total": {
+                                                    "type": "integer"
+                                                },
+                                                "sort": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "asc",
+                                                        "desc"
+                                                    ]
+                                                },
+                                                "sort_dir": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/backoffice/qmr/transactions": {
+            "get": {
+                "tags": [
+                    "QMR"
+                ],
+                "summary": "QMR - get list of transaction. Needs permission svxp:list",
+                "operationId": "f317e7a1fe8f917a708cae0b9e896d60",
+                "parameters": [
+                    {
+                        "name": "f_host_date_from",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "f_host_date_to",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "f_oper_type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "OPTP0000",
+                                    "OPTP0001",
+                                    "OPTP0010",
+                                    "OPTP0018",
+                                    "OPTP0019",
+                                    "OPTP0020",
+                                    "OPTP0026",
+                                    "OPTP0029",
+                                    "OPTP0030",
+                                    "OPTP0119"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "f_msg_type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "MSGTAUTH",
+                                    "MSGTPREU",
+                                    "MSGTPRES",
+                                    "MSGTCHBK",
+                                    "MSGTREPR",
+                                    "MSGTBTCH",
+                                    "MSGTCMPL",
+                                    "MSGTFPST",
+                                    "MSGTRLBK",
+                                    "MSGTRTRQ",
+                                    "MSGTSCDL",
+                                    "MSGTSPLT",
+                                    "MSGTSTAT",
+                                    "MSGTVALD"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "f_sttl_type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "STTT6008",
+                                    "STTT6009",
+                                    "STTT6010",
+                                    "STTT0010",
+                                    "STTT0100",
+                                    "STTT0200",
+                                    "STTT0000",
+                                    "STTT0300",
+                                    "STTT1001",
+                                    "STTT1002"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/csv": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Error of validation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/3ds/fail": {
+            "get": {
+                "tags": [
+                    "3DS"
+                ],
+                "summary": "3DS fail.",
+                "operationId": "f3681351b7322d737add6bb75da6ba3c",
+                "parameters": [
+                    {
+                        "name": "OrderId",
+                        "in": "query",
+                        "description": "The order ID",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Error of validation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/3ds/mc/cb": {
+            "post": {
+                "tags": [
+                    "3DS"
+                ],
+                "summary": "3DS callback",
+                "operationId": "9e6fa1a322cad4e5cf3c0bc4a18b852d",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "mdOrder",
+                                    "operation",
+                                    "status"
+                                ],
+                                "properties": {
+                                    "mdOrder": {
+                                        "type": "string"
+                                    },
+                                    "operation": {
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Error of validation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/3ds/success": {
+            "get": {
+                "tags": [
+                    "3DS"
+                ],
+                "summary": "3DS success.",
+                "operationId": "c0ce1c119541658f8446af892c924ef5",
+                "parameters": [
+                    {
+                        "name": "OrderId",
+                        "in": "query",
+                        "description": "The order ID",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "transactionId": {
+                                            "type": "string"
+                                        },
+                                        "authenticationId": {
+                                            "type": "string"
+                                        },
+                                        "authenticationMethod": {
+                                            "type": "string"
+                                        },
+                                        "sessionExpirationDate": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error of validation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/token/refresh": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Recieve new access token using refresh token",
+                "parameters": [
+                    {
+                        "name": "X-Auth-Refresh-Token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "X-Auth-Client-Id",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "payload": {
+                                            "properties": {
+                                                "access_token": {
+                                                    "type": "string"
+                                                },
+                                                "refresh_token": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object",
+                                            "example": {
+                                                "access_token": "JWT....18FDAFE03BDD46C530FCC9EF278F10E4",
+                                                "refresh_token": "...."
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unathorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error_code": {
+                                            "type": "string",
+                                            "enum": [
+                                                "invalid_token"
+                                            ]
+                                        },
+                                        "error_message": {
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error_code": {
+                                            "type": "string",
+                                            "enum": [
+                                                "not_enough_permissions"
+                                            ]
+                                        },
+                                        "error_message": {
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected case. Something went wrong.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalServerErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Response": {
+                "required": [
+                    "payload"
+                ],
+                "properties": {
+                    "error_code": {
+                        "type": "string"
+                    },
+                    "error_message": {
+                        "type": "string"
+                    },
+                    "payload": {
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "ValidationErrorResponse": {
+                "required": [
+                    "payload"
+                ],
+                "properties": {
+                    "error_code": {
+                        "type": "string",
+                        "default": "validation_errors"
+                    },
+                    "error_message": {
+                        "type": "string"
+                    },
+                    "payload": {
+                        "properties": {
+                            "errors": {
+                                "type": "object",
+                                "example": {
+                                    "field_1_name": [
+                                        "required",
+                                        "invalid_date_format"
+                                    ],
+                                    "field_2_name": [
+                                        "invalid_data",
+                                        "max_length_is_exceeded"
+                                    ]
+                                },
+                                "additionalProperties": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "InternalServerErrorResponse": {
+                "properties": {
+                    "error_code": {
+                        "type": "string"
+                    },
+                    "error_message": {
+                        "type": "string"
+                    },
+                    "payload": {
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "BearerAuth": {
+                "type": "http",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": [
+        {
+            "BearerAuth": []
+        }
+    ],
+    "tags": [
+        {
+            "name": "3DS",
+            "description": "3DS Events"
+        },
+        {
+            "name": "Authentication",
+            "description": "OOB (Out-of-Band) authentication"
+        },
+        {
+            "name": "Clearing",
+            "description": "SVXP clearing operations"
+        },
+        {
+            "name": "QMR",
+            "description": "QMR reports"
+        }
+    ]
+}
