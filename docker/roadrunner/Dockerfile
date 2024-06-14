@@ -37,7 +37,9 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 COPY composer.json composer.lock symfony.lock ./
 
-RUN composer update --no-scripts --no-progress --no-interaction
+RUN composer config --global gitlab-token.gitlab.paysera.net glpat-nm1vH6L8FXiE7X7_but5
+
+RUN composer update --no-scripts --no-interaction
 
 #ARG rr_version="latest"
 #COPY --from=spiralscout/roadrunner:latest /usr/bin/rr /usr/local/bin

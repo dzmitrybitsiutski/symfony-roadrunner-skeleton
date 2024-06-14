@@ -5,7 +5,6 @@ namespace App\Protobuf;
 use App\Entity\Product;
 use App\Entity\Category;
 use Spiral\RoadRunner\GRPC;
-use App\Protobuf\GRPCHelper;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Protobuf\Generated\InventoryInterface;
 use App\Protobuf\Generated\GetCategoriesResponse;

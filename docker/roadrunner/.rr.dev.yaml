@@ -9,7 +9,7 @@ rpc:
 server:
   command: "php /home/app/src/public/index.php"
   env:
-    - APP_RUNTIME: App\RoadrunnerBundle\Runtime\Runtime
+    - APP_RUNTIME: Paysera\RoadRunnerBundle\Runtime\Runtime
     - XDEBUG_SESSION: "app-card-skeleton"
     - PHP_IDE_CONFIG: serverName=app-card-skeleton
 

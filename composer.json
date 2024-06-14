@@ -5,6 +5,10 @@
     "prefer-stable": true,
     "repositories": [
         {
+            "type": "vcs",
+            "url": "https://gitlab.paysera.net/dzmitry.bitsiutski/roadrunner-bundle"
+        },
+        {
             "type": "composer",
             "url": "https://private-repo-repman.paysera.net"
         },
@@ -22,6 +26,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
+        "dzmitry.bitsiutski/roadrunner-bundle": "^0.0.5",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",
@@ -37,6 +42,7 @@
         "spiral/roadrunner-jobs": "^4.4",
         "spiral/roadrunner-cli": "^2.6",
         "spiral/roadrunner-metrics": "^3.2",
+        "spiral/roadrunner-kv": "^4.2",
         "sentry/sentry": "^4.8",
         "symfony/asset": "6.4.*",
         "symfony/console": "6.4.*",
@@ -63,7 +69,9 @@
         "symfony/routing": "^6.4|^7.0",
         "symfony/security-http":"^6.3.6|^7.0",
         "symfony/cache": "^6.0|^7.0",
-        "symfony/twig-bundle": "^6.0 || ^7.0"
+        "symfony/twig-bundle": "^6.0 || ^7.0",
+        "sentry/sentry-symfony": "^5.0",
+        "guzzlehttp/guzzle": "^7.8"
     },
     "config": {
         "allow-plugins": {
