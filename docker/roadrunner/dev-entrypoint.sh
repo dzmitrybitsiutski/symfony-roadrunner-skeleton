@@ -8,4 +8,3 @@ composer check-platform-reqs
 php bin/console cache:warmup
 php bin/console doc:fix:load
 
-exec rr serve -c /home/app/src/docker/roadrunner/.rr.dev.yaml
