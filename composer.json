@@ -26,7 +26,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
-        "dzmitry.bitsiutski/roadrunner-bundle": "^0.0.6",
+        "dzmitry.bitsiutski/roadrunner-bundle": "^0.0.41",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",
@@ -71,7 +71,9 @@
         "symfony/cache": "^6.0|^7.0",
         "symfony/twig-bundle": "^6.0 || ^7.0",
         "sentry/sentry-symfony": "^5.0",
-        "guzzlehttp/guzzle": "^7.8"
+        "guzzlehttp/guzzle": "^7.8",
+        "temporal/sdk": "^2.10",
+        "nesbot/carbon": "^3.5"
     },
     "config": {
         "allow-plugins": {

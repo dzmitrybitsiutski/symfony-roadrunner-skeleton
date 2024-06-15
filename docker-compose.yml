@@ -9,6 +9,7 @@ services:
     environment:
       PHP_IDE_CONFIG: "serverName=sm-rr-skeleton"
       FINANCE_APP_CONTAINER: ${FINANCE_APP_CONTAINER:-finance_app}
+      SERVER_NAME: ${SERVER_NAME}
     volumes:
       - ./:/home/app/src
       - ./docker/development/https/local.crt:/etc/https/local.crt
@@ -34,11 +35,5 @@ services:
       - app_card_db_data:/var/lib/mysql:rw
     ports:
       - ${DB_HOST_PORT_MD:-13306}:${DATABASE_PORT:-3306}
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
 volumes:
   app_card_db_data:
-
-networks:
-  default:
-    name: ${NETWORK_NAME:-sm-rr-network}

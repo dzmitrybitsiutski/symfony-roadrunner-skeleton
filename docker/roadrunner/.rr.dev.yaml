@@ -26,16 +26,16 @@ http:
       ttl: 0
       # idle_ttl defines maximum duration worker can spend in idle mode after
       # first use. Disabled when 0 (seconds)
-      idle_ttl: 10s
+      idle_ttl: 60s
       # exec_ttl defines maximum lifetime per job (seconds)
-      exec_ttl: 10s
+      exec_ttl: 60s
       # max_worker_memory limits memory usage per worker (MB)
       max_worker_memory: 100
 
   ssl:
     # host and port separated by semicolon (default :443)
     address: :3002
-    redirect: false
+    redirect: true
     cert: /etc/https/local.crt
     key: /etc/https/local.key
 
@@ -84,7 +84,7 @@ http:
     #
     # Default: <empty map>
     request:
-      input: "custom-header"
+      Example-Request-Header: "Value"
 
     # Automatically add headers to every response.
     #
@@ -105,15 +105,10 @@ grpc:
     - "/home/app/src/proto/servers/inventory.proto"
   pool:
     num_workers: 1
-
     max_jobs: 1
-
     allocate_timeout: 60s
-
     destroy_timeout: 60
-
     debug: true
-
     supervisor:
       # watch_tick defines how often to check the state of the workers (seconds)
       watch_tick: 1s
@@ -121,16 +116,19 @@ grpc:
       ttl: 0
       # idle_ttl defines maximum duration worker can spend in idle mode after
       # first use. Disabled when 0 (seconds)
-      idle_ttl: 10s
+      idle_ttl: 60s
       # exec_ttl defines maximum lifetime per job (seconds)
-      exec_ttl: 10s
+      exec_ttl: 60s
       # max_worker_memory limits memory usage per worker (MB)
       max_worker_memory: 100
+
+#https://docs.roadrunner.dev/docs/queues-and-jobs/kafka
+# Kafka jobs driver
 
 jobs:
   consume: [ "default" ]
   pool:
-    num_workers: 2
+    num_workers: 1
     supervisor:
       max_worker_memory: 100
   pipelines:
