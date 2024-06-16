@@ -1,26 +1,35 @@
 # Roadrunner Dev Dockerfile
-FROM php:8.3-cli
+FROM php:8.2-alpine
 
-ENV PROTOBUF_VERSION "3.25.1"
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-  nano \
-  bash \
-  libzip-dev \
-  unzip \
-  libonig-dev
-
-# Install PHP Extensions
-ENV CFLAGS="$CFLAGS -D_GNU_SOURCE"
-RUN docker-php-ext-install zip \
-  && docker-php-ext-install opcache sockets mbstring bcmath \
-  && docker-php-ext-enable opcache sockets mbstring bcmath
-
-# Protobuf and GRPC
-ENV PROTOBUF_VERSION "3.25.1"
-RUN pecl channel-update pecl.php.net
-RUN pecl install protobuf-${PROTOBUF_VERSION} grpc \
-    && docker-php-ext-enable protobuf grpc
+RUN apk add --no-cache --virtual .build-deps \
+        $PHPIZE_DEPS \
+        linux-headers \
+    && apk add --update --no-cache \
+        openssl-dev \
+        pcre-dev \
+        icu-dev \
+        icu-data-full \
+        libzip-dev \
+        postgresql-dev \
+        protobuf \
+        grpc \
+    && docker-php-ext-install  \
+        bcmath \
+        intl \
+        opcache \
+        zip \
+        sockets \
+        pdo_pgsql \
+        pdo_mysql \
+    && pecl install protobuf \
+    && pecl install grpc \
+    && pecl install xdebug \
+    && docker-php-ext-enable \
+        grpc \
+        protobuf \
+        xdebug \
+    && pecl clear-cache \
+    && apk del --purge .build-deps
 
 WORKDIR /home/app/src
 
