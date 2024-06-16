@@ -6,19 +6,19 @@ namespace App\Workflow\SimpleActivity;
 
 use Paysera\RoadRunnerBundle\Worker\Temporal\BaseActivityInterface;
 
-class GreetingActivity implements GreetingActivityInterface, BaseActivityInterface
+class SimpleActivity implements SimpleActivityInterface, BaseActivityInterface
 {
-    public function composeGreeting(string $greeting, string $name): string
+    public function compose(string $greeting, string $name): string
     {
         return 'Running:' . $greeting . ' ' . $name;
     }
 
-    public function compileGreeting(string $greeting, string $name): string
+    public function compile(string $greeting, string $name): string
     {
         return 'Compile:' . $greeting . ' ' . $name;
     }
 
-    public function declineGreeting(string $greeting, string $name): string
+    public function decline(string $greeting, string $name): string
     {
         return 'Decline:' . $greeting . ' ' . $name;
     }

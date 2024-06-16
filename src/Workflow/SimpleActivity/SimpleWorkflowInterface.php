@@ -8,14 +8,14 @@ use Temporal\Workflow\WorkflowInterface;
 use Temporal\Workflow\WorkflowMethod;
 
 #[WorkflowInterface]
-interface GreetingWorkflowInterface
+interface SimpleWorkflowInterface
 {
     /**
      * @param string $name
      * @return string
      */
-    #[WorkflowMethod(name: "SimpleActivity.greet")]
-    public function greet(
+    #[WorkflowMethod(name: "SimpleActivity.simple")]
+    public function simple(
         string $name
     );
 }

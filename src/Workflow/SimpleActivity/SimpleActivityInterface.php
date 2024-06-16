@@ -8,22 +8,22 @@ use Temporal\Activity\ActivityInterface;
 use Temporal\Activity\ActivityMethod;
 
 #[ActivityInterface(prefix: 'SimpleActivity.')]
-interface GreetingActivityInterface
+interface SimpleActivityInterface
 {
-    #[ActivityMethod(name: "ComposeGreeting")]
-    public function composeGreeting(
+    #[ActivityMethod(name: "Compose")]
+    public function compose(
         string $greeting,
         string $name
     ): string;
 
-    #[ActivityMethod(name: "CompileGreeting")]
-    public function compileGreeting(
+    #[ActivityMethod(name: "Compile")]
+    public function compile(
         string $greeting,
         string $name
     ): string;
 
-    #[ActivityMethod(name: "DeclineGreeting")]
-    public function declineGreeting(
+    #[ActivityMethod(name: "Decline")]
+    public function decline(
         string $greeting,
         string $name
     ): string;

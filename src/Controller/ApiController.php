@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Workflow\SimpleActivity\GreetingWorkflowInterface;
+use App\Workflow\SimpleActivity\SimpleWorkflowInterface;
 use Carbon\CarbonInterval;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,15 +23,15 @@ class ApiController extends AbstractController
     public function index(): JsonResponse
     {
         $workflow = $this->workflowClient->newWorkflowStub(
-            GreetingWorkflowInterface::class,
+            SimpleWorkflowInterface::class,
             WorkflowOptions::new()->withWorkflowExecutionTimeout(CarbonInterval::minute())
         );
 
-        $this->logger->debug("Starting <comment>GreetingWorkflow</comment>... ");
+        $this->logger->debug("Starting <comment>SimpleWorkflow</comment>... ");
 
         // Start a workflow execution. Usually this is done from another program.
-        // Uses task queue from the GreetingWorkflow @WorkflowMethod annotation.
-        $this->workflowClient->start($workflow, 'Antony');
+        // Uses task queue from the SimpleWorkflow @WorkflowMethod annotation.
+        $this->workflowClient->start($workflow, 'Example');
 
         return $this->json([
             'message' => 'Welcome to the API!',

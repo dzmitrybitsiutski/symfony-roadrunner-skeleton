@@ -10,7 +10,7 @@ use Temporal\Common\RetryOptions;
 use Temporal\Workflow;
 use Paysera\RoadRunnerBundle\Worker\Temporal\BaseWorkflowInterface;
 
-class GreetingWorkflow implements GreetingWorkflowInterface, BaseWorkflowInterface
+class SimpleWorkflow implements SimpleWorkflowInterface, BaseWorkflowInterface
 {
     private $greetingActivity;
 
@@ -22,7 +22,7 @@ class GreetingWorkflow implements GreetingWorkflowInterface, BaseWorkflowInterfa
          * activity invocations.
          */
         $this->greetingActivity = Workflow::newActivityStub(
-            GreetingActivityInterface::class,
+            SimpleActivityInterface::class,
             ActivityOptions::new()
                 ->withStartToCloseTimeout(CarbonInterval::seconds(40))
                 ->withRetryOptions(
@@ -34,20 +34,20 @@ class GreetingWorkflow implements GreetingWorkflowInterface, BaseWorkflowInterfa
         );
     }
 
-    public function greet(string $name): \Generator
+    public function simple(string $name): \Generator
     {
         // This is a blocking call that returns only after the activity has completed.
         $saga = new Workflow\Saga();
         $saga->setParallelCompensation(false);
 
         try {
-            $saga->addCompensation(fn (): \Generator => yield $this->greetingActivity->declineGreeting('Hello', $name));
+            $saga->addCompensation(fn (): \Generator => yield $this->greetingActivity->decline('Hello', $name));
 
             yield Workflow::timer(CarbonInterval::seconds(10));
 
-            yield $this->greetingActivity->composeGreeting('Hello', $name);
+            yield $this->greetingActivity->compose('Hello', $name);
 
-            yield $this->greetingActivity->compileGreeting('Hello', $name);
+            yield $this->greetingActivity->compile('Hello', $name);
         } catch (\Throwable $throwable) {
             yield $saga->compensate();
 
