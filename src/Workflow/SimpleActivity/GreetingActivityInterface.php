@@ -1,17 +1,9 @@
 <?php
 
-/**
- * This file is part of Temporal package.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
 namespace App\Workflow\SimpleActivity;
 
-// @@@SNIPSTART php-hello-activity-interface
 use Temporal\Activity\ActivityInterface;
 use Temporal\Activity\ActivityMethod;
 
@@ -23,5 +15,16 @@ interface GreetingActivityInterface
         string $greeting,
         string $name
     ): string;
+
+    #[ActivityMethod(name: "CompileGreeting")]
+    public function compileGreeting(
+        string $greeting,
+        string $name
+    ): string;
+
+    #[ActivityMethod(name: "DeclineGreeting")]
+    public function declineGreeting(
+        string $greeting,
+        string $name
+    ): string;
 }
-// @@@SNIPEND

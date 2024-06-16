@@ -80,7 +80,7 @@ services:
       - 4317:4317
       - 4318:4318
     volumes:
-      - ./docker/otel/otel-collector-config.yml:/etc/otel-collector-config.yml
+      - ./docker/roadrunner/otel/otel-collector-config.yml:/etc/otel-collector-config.yml
 
   zipkin:
     container_name: zipkin
