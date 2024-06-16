@@ -1,23 +1,15 @@
 <?php
 
-/**
- * This file is part of Temporal package.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
 namespace App\Workflow\SimpleActivity;
 
 use Carbon\CarbonInterval;
 use Temporal\Activity\ActivityOptions;
+use Temporal\Common\RetryOptions;
 use Temporal\Workflow;
 use Paysera\RoadRunnerBundle\Worker\Temporal\BaseWorkflowInterface;
 
-
-// @@@SNIPSTART php-hello-workflow
 class GreetingWorkflow implements GreetingWorkflowInterface, BaseWorkflowInterface
 {
     private $greetingActivity;
@@ -31,14 +23,35 @@ class GreetingWorkflow implements GreetingWorkflowInterface, BaseWorkflowInterfa
          */
         $this->greetingActivity = Workflow::newActivityStub(
             GreetingActivityInterface::class,
-            ActivityOptions::new()->withStartToCloseTimeout(CarbonInterval::seconds(2))
+            ActivityOptions::new()
+                ->withStartToCloseTimeout(CarbonInterval::seconds(40))
+                ->withRetryOptions(
+                    RetryOptions::new()
+                        ->withInitialInterval(5)
+                        ->withBackoffCoefficient(2.0)
+                        ->withMaximumAttempts(3),
+                ),
         );
     }
 
     public function greet(string $name): \Generator
     {
         // This is a blocking call that returns only after the activity has completed.
-        return yield $this->greetingActivity->composeGreeting('Hello', $name);
+        $saga = new Workflow\Saga();
+        $saga->setParallelCompensation(false);
+
+        try {
+            $saga->addCompensation(fn (): \Generator => yield $this->greetingActivity->declineGreeting('Hello', $name));
+
+            yield Workflow::timer(CarbonInterval::seconds(10));
+
+            yield $this->greetingActivity->composeGreeting('Hello', $name);
+
+            yield $this->greetingActivity->compileGreeting('Hello', $name);
+        } catch (\Throwable $throwable) {
+            yield $saga->compensate();
+
+            throw $throwable;
+        }
     }
 }
-// @@@SNIPEND

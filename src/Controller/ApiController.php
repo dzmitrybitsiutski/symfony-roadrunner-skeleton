@@ -31,7 +31,7 @@ class ApiController extends AbstractController
 
         // Start a workflow execution. Usually this is done from another program.
         // Uses task queue from the GreetingWorkflow @WorkflowMethod annotation.
-        $run = $this->workflowClient->start($workflow, 'Antony');
+        $this->workflowClient->start($workflow, 'Antony');
 
         return $this->json([
             'message' => 'Welcome to the API!',
