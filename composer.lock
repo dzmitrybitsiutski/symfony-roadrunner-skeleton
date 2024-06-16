@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "46755f97ece2612cd5d2d2bbc129d4cc",
+    "content-hash": "847cd821342f67a27ea24eb1e3a6e671",
     "packages": [
         {
             "name": "brick/math",
@@ -1736,16 +1736,16 @@
         },
         {
             "name": "dzmitry.bitsiutski/roadrunner-bundle",
-            "version": "0.0.43",
+            "version": "0.0.69",
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.paysera.net:3333/dzmitry.bitsiutski/roadrunner-bundle.git",
-                "reference": "1a2f99942a07e8f968d00aa728aa4d91d045dd4b"
+                "reference": "d284cd3454c296905528e2e7f4464029d1d756eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.paysera.net/api/v4/projects/dzmitry%2Ebitsiutski%2Froadrunner-bundle/repository/archive.zip?sha=1a2f99942a07e8f968d00aa728aa4d91d045dd4b",
-                "reference": "1a2f99942a07e8f968d00aa728aa4d91d045dd4b",
+                "url": "https://gitlab.paysera.net/api/v4/projects/dzmitry%2Ebitsiutski%2Froadrunner-bundle/repository/archive.zip?sha=d284cd3454c296905528e2e7f4464029d1d756eb",
+                "reference": "d284cd3454c296905528e2e7f4464029d1d756eb",
                 "shasum": ""
             },
             "require": {
@@ -1833,10 +1833,10 @@
             ],
             "description": "A RoadRunner worker as a Symfony Bundle",
             "support": {
-                "source": "https://gitlab.paysera.net/dzmitry.bitsiutski/roadrunner-bundle/-/tree/0.0.43",
+                "source": "https://gitlab.paysera.net/dzmitry.bitsiutski/roadrunner-bundle/-/tree/0.0.69",
                 "issues": "https://gitlab.paysera.net/dzmitry.bitsiutski/roadrunner-bundle/-/issues"
             },
-            "time": "2024-06-16T00:14:12+02:00"
+            "time": "2024-06-16T14:45:55+02:00"
         },
         {
             "name": "friendsofphp/proxy-manager-lts",
