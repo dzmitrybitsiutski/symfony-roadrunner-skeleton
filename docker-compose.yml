@@ -110,7 +110,9 @@ services:
       TEMPORAL_ENDPOINT: ${TEMPORAL_HOST}:${TEMPORAL_PORT}
       TEMPORAL_HOST: temporal
       TEMPORAL_PORT: 7233
-      OTEL_HOST: collector
+      OTEL_HOST: ${OTEL_HOST}
+      OTEL_PORTL: ${OTEL_PORT}
+      OTEL_COLLECTOR_ENDPOINT: http://${OTEL_HOST}:${OTEL_PORT}
     volumes:
       - ./:/home/app/src
       - ./docker/development/https/local.crt:/etc/https/local.crt

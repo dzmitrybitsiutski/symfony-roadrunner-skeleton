@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Workflow\SimpleActivity\SimpleWorkflowInterface;
 use Carbon\CarbonInterval;
+use Paysera\RoadRunnerBundle\Environment\App\AppEnvironment;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -24,7 +25,9 @@ class ApiController extends AbstractController
     {
         $workflow = $this->workflowClient->newWorkflowStub(
             SimpleWorkflowInterface::class,
-            WorkflowOptions::new()->withWorkflowExecutionTimeout(CarbonInterval::minute())
+            WorkflowOptions::new()
+                ->withTaskQueue(AppEnvironment::fromEnv()->getService())
+                ->withWorkflowExecutionTimeout(CarbonInterval::minute())
         );
 
         $this->logger->debug("Starting <comment>SimpleWorkflow</comment>... ");

@@ -179,3 +179,13 @@ reload:
 
       # recursive search for file patterns to add
       recursive: true
+
+otel:
+  insecure: true
+  compress: false
+  client: http
+  exporter: otlp
+  resource:
+    service_name: sm-rr-skeleton
+    service_version: 1.0.0
+  endpoint: ${OTEL_HOST:-localhost}:${OTEL_PORT:-4318}

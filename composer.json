@@ -26,7 +26,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
-        "dzmitry.bitsiutski/roadrunner-bundle": "^0.0.69",
+        "dzmitry.bitsiutski/roadrunner-bundle": "^0.0.80",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",
@@ -73,7 +73,10 @@
         "sentry/sentry-symfony": "^5.0",
         "guzzlehttp/guzzle": "^7.8",
         "temporal/sdk": "^2.10",
-        "nesbot/carbon": "^3.5"
+        "nesbot/carbon": "^3.5",
+        "temporal/open-telemetry-interceptors": "dev-master",
+        "open-telemetry/exporter-otlp": "^0.0.17",
+        "open-telemetry/transport-grpc": "^0.0.17"
     },
     "config": {
         "allow-plugins": {
