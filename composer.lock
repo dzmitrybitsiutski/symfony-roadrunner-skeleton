@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1e629b323a5e1f23d5387c06ec7a16e",
+    "content-hash": "f14a4a8e33ec3d032c117597224b9317",
     "packages": [
         {
             "name": "brick/math",
@@ -1736,16 +1736,16 @@
         },
         {
             "name": "dzmitry.bitsiutski/roadrunner-bundle",
-            "version": "0.0.80",
+            "version": "0.0.84",
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.paysera.net:3333/dzmitry.bitsiutski/roadrunner-bundle.git",
-                "reference": "db9b90876a314b36fc9b27e85b899f9f36ff2a28"
+                "reference": "a8a96b217ea7c61c12e430bf3f8dfaf540c23a6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.paysera.net/api/v4/projects/dzmitry%2Ebitsiutski%2Froadrunner-bundle/repository/archive.zip?sha=db9b90876a314b36fc9b27e85b899f9f36ff2a28",
-                "reference": "db9b90876a314b36fc9b27e85b899f9f36ff2a28",
+                "url": "https://gitlab.paysera.net/api/v4/projects/dzmitry%2Ebitsiutski%2Froadrunner-bundle/repository/archive.zip?sha=a8a96b217ea7c61c12e430bf3f8dfaf540c23a6a",
+                "reference": "a8a96b217ea7c61c12e430bf3f8dfaf540c23a6a",
                 "shasum": ""
             },
             "require": {
@@ -1833,10 +1833,10 @@
             ],
             "description": "A RoadRunner worker as a Symfony Bundle",
             "support": {
-                "source": "https://gitlab.paysera.net/dzmitry.bitsiutski/roadrunner-bundle/-/tree/0.0.80",
+                "source": "https://gitlab.paysera.net/dzmitry.bitsiutski/roadrunner-bundle/-/tree/0.0.84",
                 "issues": "https://gitlab.paysera.net/dzmitry.bitsiutski/roadrunner-bundle/-/issues"
             },
-            "time": "2024-06-16T19:50:22+02:00"
+            "time": "2024-06-17T12:29:06+02:00"
         },
         {
             "name": "friendsofphp/proxy-manager-lts",
@@ -3269,6 +3269,127 @@
                 "source": "https://github.com/php-http/discovery/tree/1.19.4"
             },
             "time": "2024-03-29T13:00:05+00:00"
+        },
+        {
+            "name": "php-http/httplug",
+            "version": "2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-http/httplug.git",
+                "reference": "625ad742c360c8ac580fcc647a1541d29e257f67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-http/httplug/zipball/625ad742c360c8ac580fcc647a1541d29e257f67",
+                "reference": "625ad742c360c8ac580fcc647a1541d29e257f67",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo-repman.paysera.net/dists/%package%/%version%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": "^7.1 || ^8.0",
+                "php-http/promise": "^1.1",
+                "psr/http-client": "^1.0",
+                "psr/http-message": "^1.0 || ^2.0"
+            },
+            "require-dev": {
+                "friends-of-phpspec/phpspec-code-coverage": "^4.1 || ^5.0 || ^6.0",
+                "phpspec/phpspec": "^5.1 || ^6.0 || ^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Http\\Client\\": "src/"
+                }
+            },
+            "notification-url": "https://repo-repman.paysera.net/downloads",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com",
+                    "homepage": "https://sagikazarmark.hu"
+                }
+            ],
+            "description": "HTTPlug, the HTTP client abstraction for PHP",
+            "homepage": "http://httplug.io",
+            "keywords": [
+                "client",
+                "http"
+            ],
+            "support": {
+                "issues": "https://github.com/php-http/httplug/issues",
+                "source": "https://github.com/php-http/httplug/tree/2.4.0"
+            },
+            "time": "2023-04-14T15:10:03+00:00"
+        },
+        {
+            "name": "php-http/promise",
+            "version": "1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-http/promise.git",
+                "reference": "fc85b1fba37c169a69a07ef0d5a8075770cc1f83"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-http/promise/zipball/fc85b1fba37c169a69a07ef0d5a8075770cc1f83",
+                "reference": "fc85b1fba37c169a69a07ef0d5a8075770cc1f83",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo-repman.paysera.net/dists/%package%/%version%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "friends-of-phpspec/phpspec-code-coverage": "^4.3.2 || ^6.3",
+                "phpspec/phpspec": "^5.1.2 || ^6.2 || ^7.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Http\\Promise\\": "src/"
+                }
+            },
+            "notification-url": "https://repo-repman.paysera.net/downloads",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joel Wurtz",
+                    "email": "joel.wurtz@gmail.com"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com"
+                }
+            ],
+            "description": "Promise used for asynchronous HTTP requests",
+            "homepage": "http://httplug.io",
+            "keywords": [
+                "promise"
+            ],
+            "support": {
+                "issues": "https://github.com/php-http/promise/issues",
+                "source": "https://github.com/php-http/promise/tree/1.3.1"
+            },
+            "time": "2024-03-15T13:55:21+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",

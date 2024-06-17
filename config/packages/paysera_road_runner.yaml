@@ -10,6 +10,9 @@ paysera_road_runner:
             - Symfony\Component\Serializer\Exception\ExceptionInterface
             - Symfony\Contracts\HttpClient\Exception\ExceptionInterface
 
+    open_telemetry:
+        enabled: true
+
     metrics:
         enabled: false
         # collect:

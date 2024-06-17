@@ -1,4 +1,3 @@
-# Roadrunner Dev Dockerfile
 FROM php:8.2-alpine
 
 RUN apk add --no-cache --virtual .build-deps \
@@ -43,12 +42,7 @@ COPY composer.json composer.lock symfony.lock ./
 
 RUN composer config --global gitlab-token.gitlab.paysera.net glpat-nm1vH6L8FXiE7X7_but5
 
-RUN composer update --no-scripts --no-interaction
-
-#ARG rr_version="latest"
-#COPY --from=spiralscout/roadrunner:latest /usr/bin/rr /usr/local/bin
-
-#RUN ./vendor/bin/rr get-binary --location /usr/local/bin
+RUN composer install --no-scripts --no-interaction
 
 ENV APP_ENV=dev
 
