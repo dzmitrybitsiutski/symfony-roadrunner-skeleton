@@ -30,7 +30,7 @@ class ApiController extends AbstractController
                 ->withWorkflowExecutionTimeout(CarbonInterval::minute())
         );
 
-        $this->logger->debug("Starting <comment>SimpleWorkflow</comment>... ");
+        $this->logger->debug("Starting SimpleWorkflow... ");
 
         // Start a workflow execution. Usually this is done from another program.
         // Uses task queue from the SimpleWorkflow @WorkflowMethod annotation.

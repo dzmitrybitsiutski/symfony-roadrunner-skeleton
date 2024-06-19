@@ -6,5 +6,6 @@ composer update --prefer-dist --no-interaction
 composer dump-autoload --optimize
 composer check-platform-reqs
 php bin/console cache:warmup
-php bin/console doc:fix:load
+php bin/console doctrine:migrations:migrate
 
+exec "$@"

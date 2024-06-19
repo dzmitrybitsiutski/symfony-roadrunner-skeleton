@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f14a4a8e33ec3d032c117597224b9317",
+    "content-hash": "58216bf2ff8d8ce6aee89e653df304d1",
     "packages": [
         {
             "name": "brick/math",
@@ -236,16 +236,16 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "1.14.3",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "fb0d71a7393298a7b232cbf4c8b1f73f3ec3d5af"
+                "reference": "e157ef3f3124bbf6fe7ce0ffd109e8a8ef284e7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/fb0d71a7393298a7b232cbf4c8b1f73f3ec3d5af",
-                "reference": "fb0d71a7393298a7b232cbf4c8b1f73f3ec3d5af",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/e157ef3f3124bbf6fe7ce0ffd109e8a8ef284e7f",
+                "reference": "e157ef3f3124bbf6fe7ce0ffd109e8a8ef284e7f",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -255,17 +255,17 @@
                 ]
             },
             "require": {
-                "doctrine/lexer": "^1 || ^2",
+                "doctrine/lexer": "^2 || ^3",
                 "ext-tokenizer": "*",
-                "php": "^7.1 || ^8.0",
+                "php": "^7.2 || ^8.0",
                 "psr/cache": "^1 || ^2 || ^3"
             },
             "require-dev": {
-                "doctrine/cache": "^1.11 || ^2.0",
-                "doctrine/coding-standard": "^9 || ^10",
-                "phpstan/phpstan": "~1.4.10 || ^1.8.0",
+                "doctrine/cache": "^2.0",
+                "doctrine/coding-standard": "^10",
+                "phpstan/phpstan": "^1.8.0",
                 "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
-                "symfony/cache": "^4.4 || ^5.4 || ^6",
+                "symfony/cache": "^5.4 || ^6",
                 "vimeo/psalm": "^4.10"
             },
             "suggest": {
@@ -312,9 +312,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/annotations/issues",
-                "source": "https://github.com/doctrine/annotations/tree/1.14.3"
+                "source": "https://github.com/doctrine/annotations/tree/2.0.1"
             },
-            "time": "2023-02-01T09:20:38+00:00"
+            "time": "2023-02-02T22:02:53+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -1272,16 +1272,16 @@
         },
         {
             "name": "doctrine/lexer",
-            "version": "2.1.1",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
-                "reference": "861c870e8b75f7c8f69c146c7f89cc1c0f1b49b6"
+                "reference": "31ad66abc0fc9e1a1f2d9bc6a42668d2fbbcd6dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/861c870e8b75f7c8f69c146c7f89cc1c0f1b49b6",
-                "reference": "861c870e8b75f7c8f69c146c7f89cc1c0f1b49b6",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/31ad66abc0fc9e1a1f2d9bc6a42668d2fbbcd6dd",
+                "reference": "31ad66abc0fc9e1a1f2d9bc6a42668d2fbbcd6dd",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1291,15 +1291,14 @@
                 ]
             },
             "require": {
-                "doctrine/deprecations": "^1.0",
-                "php": "^7.1 || ^8.0"
+                "php": "^8.1"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^9 || ^12",
-                "phpstan/phpstan": "^1.3",
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.6",
+                "doctrine/coding-standard": "^12",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^10.5",
                 "psalm/plugin-phpunit": "^0.18.3",
-                "vimeo/psalm": "^4.11 || ^5.21"
+                "vimeo/psalm": "^5.21"
             },
             "type": "library",
             "autoload": {
@@ -1336,7 +1335,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/lexer/issues",
-                "source": "https://github.com/doctrine/lexer/tree/2.1.1"
+                "source": "https://github.com/doctrine/lexer/tree/3.0.1"
             },
             "funding": [
                 {
@@ -1352,7 +1351,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-05T11:35:39+00:00"
+            "time": "2024-02-05T11:56:58+00:00"
         },
         {
             "name": "doctrine/migrations",
@@ -1736,29 +1735,36 @@
         },
         {
             "name": "dzmitry.bitsiutski/roadrunner-bundle",
-            "version": "0.0.84",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.paysera.net:3333/dzmitry.bitsiutski/roadrunner-bundle.git",
-                "reference": "a8a96b217ea7c61c12e430bf3f8dfaf540c23a6a"
+                "reference": "f1442303927fbd64917871de2dcd662008f8f472"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.paysera.net/api/v4/projects/dzmitry%2Ebitsiutski%2Froadrunner-bundle/repository/archive.zip?sha=a8a96b217ea7c61c12e430bf3f8dfaf540c23a6a",
-                "reference": "a8a96b217ea7c61c12e430bf3f8dfaf540c23a6a",
+                "url": "https://gitlab.paysera.net/api/v4/projects/dzmitry%2Ebitsiutski%2Froadrunner-bundle/repository/archive.zip?sha=f1442303927fbd64917871de2dcd662008f8f472",
+                "reference": "f1442303927fbd64917871de2dcd662008f8f472",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "guzzlehttp/guzzle": "^7.0",
+                "php": ">=8.2",
                 "psr/log": "^1.1 || ^2.0 || ^3.0",
                 "spiral/goridge": "^4.0",
-                "spiral/roadrunner": "^2023.1.0 || ^2024.1.0",
+                "spiral/roadrunner": "^2024.1.0",
+                "spiral/roadrunner-cli": "^2.0",
+                "spiral/roadrunner-grpc": "^3.0",
                 "spiral/roadrunner-http": "^3.0",
-                "spiral/roadrunner-worker": "^3.0.0",
+                "spiral/roadrunner-jobs": "^4.0",
+                "spiral/roadrunner-worker": "^3.0",
                 "symfony/config": "^6.0 || ^7.0",
                 "symfony/dependency-injection": "^6.0 || ^7.0",
+                "symfony/http-foundation": "^6.0 || ^7.0",
                 "symfony/http-kernel": "^6.0 || ^7.0",
-                "symfony/yaml": "^6.0 || ^7.0"
+                "symfony/runtime": "^6.0 || ^7.0",
+                "symfony/yaml": "^6.0 || ^7.0",
+                "temporal/sdk": "^2.0"
             },
             "conflict": {
                 "doctrine/doctrine-bundle": "<2.1.1",
@@ -1768,28 +1774,35 @@
             "require-dev": {
                 "blackfire/php-sdk": "^1.21",
                 "doctrine/doctrine-bundle": "^2.1.1",
-                "doctrine/mongodb-odm": "^2.2",
                 "doctrine/orm": "^2.7.3",
+                "friendsofphp/php-cs-fixer": "^3.16",
                 "laminas/laminas-zendframework-bridge": "^1.4",
                 "mikey179/vfsstream": "^1.6.8",
                 "nyholm/psr7": "^1.2",
-                "sentry/sentry-symfony": "^4.5 || ^5.0",
-                "spiral/roadrunner-grpc": "^3.0.0",
+                "open-telemetry/exporter-otlp": "^0.0.17",
+                "open-telemetry/sdk": "^0.0.17",
+                "open-telemetry/transport-grpc": "^0.0.17",
+                "php-http/httplug": "^2.4",
+                "phpspec/prophecy": "^1.11",
+                "phpspec/prophecy-phpunit": "^2.0",
+                "phpunit/phpunit": "^9.6",
+                "sentry/sentry": "^4.0",
+                "sentry/sentry-symfony": "^5.0",
                 "spiral/roadrunner-kv": "^4.0",
                 "spiral/roadrunner-metrics": "^3.0.0",
                 "symfony/framework-bundle": "^6.0 || ^7.0",
                 "symfony/proxy-manager-bridge": "^6.0 || ^7.0",
-                "symfony/runtime": "^6.0 || ^7.0",
                 "symfony/validator": "^6.0 || ^7.0",
                 "symfony/var-dumper": "^6.0 || ^7.0",
-                "symfony/var-exporter": "^6.0 || ^7.0"
+                "symfony/var-exporter": "^6.0 || ^7.0",
+                "temporal/open-telemetry-interceptors": "dev-master"
             },
             "suggest": {
                 "nyholm/psr7": "For a super lightweight PSR-7/17 implementation",
                 "spiral/roadrunner-cli": "For easy installation of RoadRunner",
                 "symfony/proxy-manager-bridge": "For doctrine re-connection implementation"
             },
-            "type": "symfony-bundle",
+            "type": "library",
             "autoload": {
                 "files": [
                     "src/functions.php"
@@ -1805,38 +1818,25 @@
             },
             "scripts": {
                 "test": [
-                    "tools/vendor/bin/phpunit --testdox --colors=always"
-                ],
-                "phpstan": [
-                    "tools/vendor/bin/phpstan analyse --no-progress --ansi"
+                    "vendor/bin/phpunit --testdox --colors=always"
                 ],
                 "cs:lint": [
-                    "tools/vendor/bin/php-cs-fixer fix --dry-run --diff --ansi --allow-risky=yes"
+                    "vendor/bin/php-cs-fixer fix --dry-run --diff --ansi --allow-risky=yes"
                 ],
                 "cs:fix": [
-                    "tools/vendor/bin/php-cs-fixer fix --ansi --allow-risky=yes"
+                    "vendor/bin/php-cs-fixer fix --ansi --allow-risky=yes"
                 ],
                 "ci": [
                     "@test",
-                    "@phpstan",
                     "@cs:lint"
                 ]
             },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dz",
-                    "email": "dz@gmail.com"
-                }
-            ],
             "description": "A RoadRunner worker as a Symfony Bundle",
             "support": {
-                "source": "https://gitlab.paysera.net/dzmitry.bitsiutski/roadrunner-bundle/-/tree/0.0.84",
+                "source": "https://gitlab.paysera.net/dzmitry.bitsiutski/roadrunner-bundle/-/tree/0.1.1",
                 "issues": "https://gitlab.paysera.net/dzmitry.bitsiutski/roadrunner-bundle/-/issues"
             },
-            "time": "2024-06-17T12:29:06+02:00"
+            "time": "2024-06-19T07:38:16+02:00"
         },
         {
             "name": "friendsofphp/proxy-manager-lts",
@@ -2494,16 +2494,16 @@
         },
         {
             "name": "laminas/laminas-code",
-            "version": "4.13.0",
+            "version": "4.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-code.git",
-                "reference": "7353d4099ad5388e84737dd16994316a04f48dbf"
+                "reference": "562e02b7d85cb9142b5116cc76c4c7c162a11a1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-code/zipball/7353d4099ad5388e84737dd16994316a04f48dbf",
-                "reference": "7353d4099ad5388e84737dd16994316a04f48dbf",
+                "url": "https://api.github.com/repos/laminas/laminas-code/zipball/562e02b7d85cb9142b5116cc76c4c7c162a11a1c",
+                "reference": "562e02b7d85cb9142b5116cc76c4c7c162a11a1c",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2521,7 +2521,7 @@
                 "laminas/laminas-coding-standard": "^2.5.0",
                 "laminas/laminas-stdlib": "^3.17.0",
                 "phpunit/phpunit": "^10.3.3",
-                "psalm/plugin-phpunit": "^0.18.4",
+                "psalm/plugin-phpunit": "^0.19.0",
                 "vimeo/psalm": "^5.15.0"
             },
             "suggest": {
@@ -2559,7 +2559,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-10-18T10:00:55+00:00"
+            "time": "2024-06-17T08:50:25+00:00"
         },
         {
             "name": "nelmio/cors-bundle",
@@ -5135,16 +5135,16 @@
         },
         {
             "name": "spiral/roadrunner",
-            "version": "v2023.3.12",
+            "version": "v2024.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roadrunner-server/roadrunner.git",
-                "reference": "9b5b65e00c6de7327142a8d689646f950fe00788"
+                "reference": "116621a11169e26bafe56e6ec4113c6f17bf73de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roadrunner-server/roadrunner/zipball/9b5b65e00c6de7327142a8d689646f950fe00788",
-                "reference": "9b5b65e00c6de7327142a8d689646f950fe00788",
+                "url": "https://api.github.com/repos/roadrunner-server/roadrunner/zipball/116621a11169e26bafe56e6ec4113c6f17bf73de",
+                "reference": "116621a11169e26bafe56e6ec4113c6f17bf73de",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -5179,7 +5179,7 @@
                 "docs": "https://roadrunner.dev/docs",
                 "forum": "https://forum.roadrunner.dev/",
                 "issues": "https://github.com/roadrunner-server/roadrunner/issues",
-                "source": "https://github.com/roadrunner-server/roadrunner/tree/v2023.3.12"
+                "source": "https://github.com/roadrunner-server/roadrunner/tree/v2024.1.4"
             },
             "funding": [
                 {
@@ -5187,7 +5187,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-29T18:16:45+00:00"
+            "time": "2024-06-13T16:43:56+00:00"
         },
         {
             "name": "spiral/roadrunner-cli",
@@ -11168,16 +11168,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.11.4",
+            "version": "1.11.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "9100a76ce8015b9aa7125b9171ae3a76887b6c82"
+                "reference": "490f0ae1c92b082f154681d7849aee776a7c1443"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9100a76ce8015b9aa7125b9171ae3a76887b6c82",
-                "reference": "9100a76ce8015b9aa7125b9171ae3a76887b6c82",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/490f0ae1c92b082f154681d7849aee776a7c1443",
+                "reference": "490f0ae1c92b082f154681d7849aee776a7c1443",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -11228,7 +11228,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-06-06T12:19:22+00:00"
+            "time": "2024-06-17T15:10:54+00:00"
         },
         {
             "name": "symfony/maker-bundle",

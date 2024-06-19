@@ -129,7 +129,7 @@ services:
       - ${GRPC_HOST_PORT:-19000}:9000
       # https
       - ${HTTPS_HOST_PORT:-3002}:3002
-    command: [ "/root/wait-for-temporal.sh", "temporal", "/usr/local/bin/rr", "serve", "-c", "/home/app/src/docker/roadrunner/.rr.dev.yaml" ]
+    command: [ "/root/entrypoint.sh", "/root/wait-for-temporal.sh", "temporal", "/usr/local/bin/rr", "serve", "-c", "/home/app/src/docker/roadrunner/.rr.dev.yaml" ]
 
   sm-rr-mariadb:
     container_name: sm-rr-mariadb

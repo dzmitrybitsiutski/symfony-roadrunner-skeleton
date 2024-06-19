@@ -16,7 +16,7 @@ http:
   address: 0.0.0.0:8080
   middleware: [ "static", "gzip" ]
   pool:
-    num_workers: 1
+    num_workers: 5
     debug: true
     max_jobs: 1
     supervisor:
@@ -141,7 +141,7 @@ temporal:
   address: ${TEMPORAL_HOST:-localhost}:${TEMPORAL_PORT:-7233}
   activities:
     debug: true
-    num_workers: 1
+    num_workers: 5
 
 logs:
   mode: development
