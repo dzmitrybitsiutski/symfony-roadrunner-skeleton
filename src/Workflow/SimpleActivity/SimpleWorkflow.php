@@ -8,7 +8,7 @@ use Carbon\CarbonInterval;
 use Temporal\Activity\ActivityOptions;
 use Temporal\Common\RetryOptions;
 use Temporal\Workflow;
-use Paysera\RoadRunnerBundle\Worker\Temporal\BaseWorkflowInterface;
+use Paysera\Bundle\RoadRunnerBundle\Worker\Temporal\BaseWorkflowInterface;
 
 class SimpleWorkflow implements SimpleWorkflowInterface, BaseWorkflowInterface
 {

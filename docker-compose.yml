@@ -57,7 +57,7 @@ services:
     depends_on:
       - temporal
     environment:
-      - TEMPORAL_CLI_ADDRESS=temporal:7233
+      - TEMPORAL_CLI_ADDRESS=${TEMPORAL_CLI_ENDPOINT}
     image: temporalio/admin-tools:${TEMPORAL_VERSION}
     stdin_open: true
     tty: true
@@ -70,7 +70,7 @@ services:
       - TEMPORAL_CORS_ORIGINS=http://localhost:3000
     image: temporalio/ui:${TEMPORAL_UI_VERSION}
     ports:
-      - 8081:8080
+      - ${TEMPORAL_UI_PORT}:8080
 
   collector:
     container_name: collector
@@ -86,7 +86,7 @@ services:
     container_name: zipkin
     image: openzipkin/zipkin-slim
     ports:
-      - 9411:9411
+      - ${ZINKIN_PORT}:9411
 
   sm-rr-skeleton:
     container_name: sm-rr-skeleton
@@ -96,23 +96,22 @@ services:
     depends_on:
       - temporal
     environment:
-      APP_ENV: ${APP_ENV}
-      PHP_IDE_CONFIG: "serverName=sm-rr-skeleton"
-      FINANCE_APP_CONTAINER: ${FINANCE_APP_CONTAINER:-finance_app}
-      SERVER_NAME: ${SERVER_NAME}
-      SERVICE_NAME: ${SERVICE_NAME}
-      TEMPORAL_CLI_ADDRESS: temporal:7233
-      TELEMETRY_DRIVER: otel
-      OTEL_TRACES_EXPORTER: otlp
-      OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
-      OTEL_EXPORTER_OTLP_ENDPOINT: http://collector:4318
-      OTEL_PHP_TRACES_PROCESSOR: simple
-      TEMPORAL_ENDPOINT: ${TEMPORAL_HOST}:${TEMPORAL_PORT}
-      TEMPORAL_HOST: temporal
-      TEMPORAL_PORT: 7233
-      OTEL_HOST: ${OTEL_HOST}
-      OTEL_PORTL: ${OTEL_PORT}
-      OTEL_COLLECTOR_ENDPOINT: http://${OTEL_HOST}:${OTEL_PORT}
+      - APP_ENV=${APP_ENV}
+      - PHP_IDE_CONFIG=serverName=${SERVER_NAME}
+      - SERVER_NAME=${SERVER_NAME}
+      - SERVICE_NAME=${SERVICE_NAME}
+      - TEMPORAL_CLI_ADDRESS=${TEMPORAL_CLI_ENDPOINT}
+      - TELEMETRY_DRIVER=otel
+      - OTEL_TRACES_EXPORTER=otlp
+      - OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://${OTEL_EXPORTER_OTLP_ENDPOINT}
+      - OTEL_PHP_TRACES_PROCESSOR=simple
+      - TEMPORAL_ENDPOINT=${TEMPORAL_HOST}:${TEMPORAL_PORT}
+      - TEMPORAL_HOST=${TEMPORAL_HOST}
+      - TEMPORAL_PORT=${TEMPORAL_PORT}
+      - OTEL_HOST=${OTEL_HOST}
+      - OTEL_PORTL=${OTEL_PORT}
+      - OTEL_COLLECTOR_ENDPOINT=http://${OTEL_HOST}:${OTEL_PORT}
     volumes:
       - ./:/home/app/src
       - ./docker/development/https/local.crt:/etc/https/local.crt
@@ -137,7 +136,7 @@ services:
     volumes:
       - app_card_db_data:/var/lib/mysql:rw
     ports:
-      - ${DB_HOST_PORT_MD:-13306}:${DATABASE_PORT:-3306}
+      - ${DATABASE_HOST_PORT:-13306}:${DATABASE_PORT:-3306}
 
 volumes:
   app_card_db_data:

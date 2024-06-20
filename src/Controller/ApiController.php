@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Workflow\SimpleActivity\SimpleWorkflowInterface;
 use Carbon\CarbonInterval;
-use Paysera\RoadRunnerBundle\Environment\App\AppEnvironment;
+use Paysera\Bundle\RoadRunnerBundle\Environment\App\AppEnvironment;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;

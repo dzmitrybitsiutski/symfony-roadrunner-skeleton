@@ -8,7 +8,7 @@ server:
   command: "php /home/app/src/public/index.php"
   relay: pipes
   env:
-    - APP_RUNTIME: Paysera\RoadRunnerBundle\Runtime\Runtime
+    - APP_RUNTIME: Paysera\Bundle\RoadRunnerBundle\Runtime\Runtime
     - XDEBUG_SESSION: "sm-rr-skeleton"
     - PHP_IDE_CONFIG: serverName=sm-rr-skeleton
 
@@ -139,6 +139,7 @@ jobs:
 
 temporal:
   address: ${TEMPORAL_HOST:-localhost}:${TEMPORAL_PORT:-7233}
+  namespace: default
   activities:
     debug: true
     num_workers: 5

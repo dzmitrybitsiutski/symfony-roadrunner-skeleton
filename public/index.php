@@ -2,9 +2,6 @@
 
 use App\AppKernel;
 use App\Kernel;
-use Symfony\Component\Dotenv\Dotenv;
-use Symfony\Component\Dotenv\Exception\PathException;
-use Symfony\Component\ErrorHandler\Debug;
 
 require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
 
