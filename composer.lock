@@ -1455,16 +1455,16 @@
         },
         {
             "name": "doctrine/persistence",
-            "version": "3.3.2",
+            "version": "3.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/persistence.git",
-                "reference": "477da35bd0255e032826f440b94b3e37f2d56f42"
+                "reference": "b337726451f5d530df338fc7f68dee8781b49779"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/persistence/zipball/477da35bd0255e032826f440b94b3e37f2d56f42",
-                "reference": "477da35bd0255e032826f440b94b3e37f2d56f42",
+                "url": "https://api.github.com/repos/doctrine/persistence/zipball/b337726451f5d530df338fc7f68dee8781b49779",
+                "reference": "b337726451f5d530df338fc7f68dee8781b49779",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1482,15 +1482,14 @@
                 "doctrine/common": "<2.10"
             },
             "require-dev": {
-                "composer/package-versions-deprecated": "^1.11",
-                "doctrine/coding-standard": "^11",
+                "doctrine/coding-standard": "^12",
                 "doctrine/common": "^3.0",
-                "phpstan/phpstan": "1.9.4",
+                "phpstan/phpstan": "1.11.1",
                 "phpstan/phpstan-phpunit": "^1",
                 "phpstan/phpstan-strict-rules": "^1.1",
                 "phpunit/phpunit": "^8.5 || ^9.5",
                 "symfony/cache": "^4.4 || ^5.4 || ^6.0",
-                "vimeo/psalm": "4.30.0 || 5.3.0"
+                "vimeo/psalm": "4.30.0 || 5.24.0"
             },
             "type": "library",
             "autoload": {
@@ -1539,7 +1538,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/persistence/issues",
-                "source": "https://github.com/doctrine/persistence/tree/3.3.2"
+                "source": "https://github.com/doctrine/persistence/tree/3.3.3"
             },
             "funding": [
                 {
@@ -1555,7 +1554,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-12T14:54:36+00:00"
+            "time": "2024-06-20T10:14:30+00:00"
         },
         {
             "name": "doctrine/sql-formatter",
@@ -1620,16 +1619,16 @@
         },
         {
             "name": "dzmitry.bitsiutski/roadrunner-bundle",
-            "version": "0.1.15",
+            "version": "0.1.33",
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.paysera.net:3333/dzmitry.bitsiutski/roadrunner-bundle.git",
-                "reference": "765c2f639ccea9ea867ae045ea20619c47a67bbf"
+                "reference": "8ebc52ea073e538e65083f7345c8e6b230c628be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.paysera.net/api/v4/projects/dzmitry%2Ebitsiutski%2Froadrunner-bundle/repository/archive.zip?sha=765c2f639ccea9ea867ae045ea20619c47a67bbf",
-                "reference": "765c2f639ccea9ea867ae045ea20619c47a67bbf",
+                "url": "https://gitlab.paysera.net/api/v4/projects/dzmitry%2Ebitsiutski%2Froadrunner-bundle/repository/archive.zip?sha=8ebc52ea073e538e65083f7345c8e6b230c628be",
+                "reference": "8ebc52ea073e538e65083f7345c8e6b230c628be",
                 "shasum": ""
             },
             "require": {
@@ -1722,10 +1721,10 @@
             },
             "description": "A RoadRunner worker as a Symfony Bundle",
             "support": {
-                "source": "https://gitlab.paysera.net/dzmitry.bitsiutski/roadrunner-bundle/-/tree/0.1.15",
+                "source": "https://gitlab.paysera.net/dzmitry.bitsiutski/roadrunner-bundle/-/tree/0.1.33",
                 "issues": "https://gitlab.paysera.net/dzmitry.bitsiutski/roadrunner-bundle/-/issues"
             },
-            "time": "2024-06-20T10:52:09+02:00"
+            "time": "2024-06-23T20:41:56+02:00"
         },
         {
             "name": "friendsofphp/proxy-manager-lts",
@@ -2520,16 +2519,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "3.5.0",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "415782b7e48223342f1a616c16c45a95b15b2318"
+                "reference": "39c8ef752db6865717cc3fba63970c16f057982c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/415782b7e48223342f1a616c16c45a95b15b2318",
-                "reference": "415782b7e48223342f1a616c16c45a95b15b2318",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/39c8ef752db6865717cc3fba63970c16f057982c",
+                "reference": "39c8ef752db6865717cc3fba63970c16f057982c",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2628,7 +2627,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-03T17:25:54+00:00"
+            "time": "2024-06-20T15:52:59+00:00"
         },
         {
             "name": "open-telemetry/api",
@@ -5024,16 +5023,16 @@
         },
         {
             "name": "spiral/roadrunner",
-            "version": "v2024.1.4",
+            "version": "v2024.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roadrunner-server/roadrunner.git",
-                "reference": "116621a11169e26bafe56e6ec4113c6f17bf73de"
+                "reference": "2b72bebf7e8119a9d160cc10ec182eae022136ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roadrunner-server/roadrunner/zipball/116621a11169e26bafe56e6ec4113c6f17bf73de",
-                "reference": "116621a11169e26bafe56e6ec4113c6f17bf73de",
+                "url": "https://api.github.com/repos/roadrunner-server/roadrunner/zipball/2b72bebf7e8119a9d160cc10ec182eae022136ff",
+                "reference": "2b72bebf7e8119a9d160cc10ec182eae022136ff",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -5068,7 +5067,7 @@
                 "docs": "https://roadrunner.dev/docs",
                 "forum": "https://forum.roadrunner.dev/",
                 "issues": "https://github.com/roadrunner-server/roadrunner/issues",
-                "source": "https://github.com/roadrunner-server/roadrunner/tree/v2024.1.4"
+                "source": "https://github.com/roadrunner-server/roadrunner/tree/v2024.1.5"
             },
             "funding": [
                 {
@@ -5076,7 +5075,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-06-13T16:43:56+00:00"
+            "time": "2024-06-20T19:03:36+00:00"
         },
         {
             "name": "spiral/roadrunner-cli",

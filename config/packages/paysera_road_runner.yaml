@@ -12,9 +12,15 @@ paysera_road_runner:
     default_integrations: true
 
     integrations:
-        doctrine: false
-        sentry: false
-        blackfire: false
+        doctrine:
+            enabled: true
+            launch: after
+        sentry:
+            enabled: true
+            launch: before
+        blackfire:
+            enabled: true
+            launch: before
 
     open_telemetry:
         enabled: false
